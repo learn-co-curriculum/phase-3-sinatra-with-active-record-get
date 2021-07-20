@@ -47,6 +47,10 @@ bundle install
 bundle exec rake db:migrate db:seed
 ```
 
+> **Note**: Running `rake db:migrate db:seed` on one line will run the
+> migrations first, then the seed file. It's a nice way to save a few
+> keystrokes!
+
 You can view the models in the `app/models` directory, and the migrations in the
 `db/migrate` folder. Here's what the relationships will look like in our ERD:
 
