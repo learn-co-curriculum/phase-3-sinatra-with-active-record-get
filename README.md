@@ -515,6 +515,8 @@ APIs provide a way for clients, like React applications, to interact with a
 database and gain access to data in a structured way. Thanks to tools like
 Sinatra and Active Record, setting up this interface is fairly straightforward.
 
+## Resources
+
 - [Sinatra Routes](https://rubydoc.info/gems/sinatra#routes)
 - [Active Model `#as_json` method][as_json]
 
