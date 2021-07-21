@@ -212,7 +212,7 @@ end
 We've got our API set up to handle one feature so far: we can return a list of
 all the games in the application. Let's imagine we're building another frontend
 feature — this time, we want a component that will just display the details
-about one specific game, including its associated review. Here's how that
+about one specific game, including its associated reviews. Here's how that
 component might look:
 
 ```js
@@ -280,8 +280,8 @@ the params hash would look like this:
 ```
 
 With that in mind, what Active Record method could we use to look up a game with
-a specific ID? Either `.find` or `.find_by` would do the trick! Let's give it a
-shot:
+a specific ID? Either [`.find`][] or [`.find_by`][] would do the trick. Let's
+give it a shot:
 
 ```rb
   get '/games/:id' do
@@ -345,15 +345,15 @@ game.to_json
 
 When we're using the `#to_json` method, Active Record [serializes][as_json]
 (converts from one format to another) the Active Record object into a JSON
-object by getting a list of the model's attributes based on the column names we
-defined in the migration for the model (along with the ID).
+object by getting a list of the model's attributes based on the column names
+defined in the database table associated with the model.
 
-Under the hood, the `#to_json` method uses the [`#as_json`][as_json] method to
+Under the hood, the `#to_json` method calls the [`#as_json`][as_json] method to
 generate a hash before converting it to a JSON string. Looking at the
 documentation for [`#as_json`][as_json], you'll notice we can pass some
 additional options to customize how the object is serialized. For example, we
-can use the `include:` option to also include data about the associations in the
-response:
+can use the `include:` option to `#to_json`, which will pass it along to
+`#as_json`, to also include data about the associations in the response:
 
 ```rb
   get '/games/:id' do
@@ -525,3 +525,5 @@ Sinatra and Active Record, setting up this interface is fairly straightforward.
 - [Active Model `#as_json` method][as_json]
 
 [as_json]: https://api.rubyonrails.org/classes/ActiveModel/Serializers/JSON.html#method-i-as_json
+[`.find`]: https://api.rubyonrails.org/v6.1.4/classes/ActiveRecord/FinderMethods.html#method-i-find
+[`.find_by`]: https://api.rubyonrails.org/v6.1.4/classes/ActiveRecord/FinderMethods.html#method-i-find_by
