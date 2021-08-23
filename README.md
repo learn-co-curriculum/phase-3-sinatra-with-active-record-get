@@ -514,8 +514,8 @@ on what data is needed on the frontend.
 In this lesson, you created your very first web API! You learned how to set up
 multiple routes to handle different requests based on what kind of data we
 needed for a frontend application, and used Active Record to serialize the JSON
-response to include all the data needed. At their most basic levels, almost web
-APIs provide a way for clients, like React applications, to interact with a
+response to include all the data needed. At their most basic levels, almost all
+web APIs provide a way for clients, like React applications, to interact with a
 database and gain access to data in a structured way. Thanks to tools like
 Sinatra and Active Record, setting up this interface is fairly straightforward.
 
