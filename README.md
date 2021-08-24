@@ -42,9 +42,9 @@ speaks HTTP that wants to interact with our database!
 We'll continue building our Sinatra application using the code from the previous
 lesson. Run these commands to install the dependencies and set up the database:
 
-```sh
-bundle install
-bundle exec rake db:migrate db:seed
+```console
+$ bundle install
+$ bundle exec rake db:migrate db:seed
 ```
 
 > **Note**: Running `rake db:migrate db:seed` on one line will run the
@@ -58,8 +58,8 @@ You can view the models in the `app/models` directory, and the migrations in the
 
 Then, run the server with our new Rake task:
 
-```sh
-bundle exec rake server
+```console
+$ bundle exec rake server
 ```
 
 With that set up, let's work on getting Sinatra and Active Record working
