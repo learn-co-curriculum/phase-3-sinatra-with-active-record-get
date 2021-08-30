@@ -71,7 +71,7 @@ Imagine we're building a feature in a React application where we'd like to show
 our users a list of all the games in the database. From React, we might have some
 code that looks like this to make this request for the data:
 
-```js
+```jsx
 function GameList() {
   const [games, setGames] = useState([]);
 
@@ -215,7 +215,7 @@ feature — this time, we want a component that will just display the details
 about one specific game, including its associated reviews. Here's how that
 component might look:
 
-```js
+```jsx
 function GameDetail({ gameId }) {
   const [game, setGame] = useState(null);
 
