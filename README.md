@@ -22,9 +22,9 @@ for that. Great! We can use Active Record to set up and access data from the
 database.
 
 Here's the problem though. React can't communicate directly with the database —
-for that, you need Active Record, and Ruby. Active Record also doesn't know
-anything about your React application (and nor should it!). So how can we access
-the data we need from in React from the database?
+for that, you need Active Record and Ruby. Active Record also doesn't know
+anything about your React application (and nor should it!). So then how can
+we connect up our React frontend with the database?
 
 Well, it sounds like we need some sort of **interface** between React and our
 database. Perhaps some sort of **Application Programming Interface** (or as you
@@ -33,9 +33,9 @@ communicate, using a couple things they **do** have in common: **HTTP** and
 **JSON**.
 
 _That_ is what we'll be building for the rest of this section: an API
-(specifically, a JSON API) that will allow us to communicate with a database
-using Active Record from a React application — or really, any application that
-speaks HTTP that wants to interact with our database!
+(specifically, a JSON API) that will allow us to use Active Record to
+communicate with a database from a React application — or really, from any
+application that speaks HTTP!
 
 ## Setup
 
@@ -68,8 +68,8 @@ together!
 ## Accessing the Model From the Controller
 
 Imagine we're building a feature in a React application where we'd like to show
-our users a list of all the games in the database. From React, we might have some
-code that looks like this to make this request for the data:
+our users a list of all the games in the database. From React, we might have
+code similar to the following to make this request for the data:
 
 ```jsx
 function GameList() {
@@ -211,9 +211,9 @@ end
 
 We've got our API set up to handle one feature so far: we can return a list of
 all the games in the application. Let's imagine we're building another frontend
-feature — this time, we want a component that will just display the details
-about one specific game, including its associated reviews. Here's how that
-component might look:
+feature; this time, we want a component that will just display the details about
+one specific game, including its associated reviews. Here's how that component
+might look:
 
 ```jsx
 function GameDetail({ gameId }) {
@@ -245,10 +245,10 @@ function GameDetail({ gameId }) {
 ```
 
 So for this feature, we know our server needs to be able to handle a GET request
-to return data about a specific game, using the ID of the game to find it in the
-database. For example, a `GET /games/10` should return the game with the ID of
-10 from the database; and a `GET /games/29` should return the game with the ID
-of 29.
+to return data about a specific game, using the game's ID to find it in the
+database. For example, a `GET /games/10` request should return the game with the
+ID of 10 from the database; and a `GET /games/29` request should return the game
+with the ID of 29.
 
 Let's start by adding a **dynamic route** to the controller to handle any of
 these requests:
@@ -309,7 +309,7 @@ an object like this in the response:
 }
 ```
 
-Try making requests using other game IDs as well — so long as the ID exists in
+Try making requests using other game IDs as well. As long as the ID exists in
 the database, you'll get a response.
 
 ### Accessing Associated Data
@@ -351,9 +351,9 @@ defined in the database table associated with the model.
 Under the hood, the `#to_json` method calls the [`#as_json`][as_json] method to
 generate a hash before converting it to a JSON string. Looking at the
 documentation for [`#as_json`][as_json], you'll notice we can pass some
-additional options to customize how the object is serialized. For example, we
-can use the `include:` option to `#to_json`, which will pass it along to
-`#as_json`, to also include data about the associations in the response:
+additional options to customize how the object is serialized. To include data
+about associated models in our JSON, we can pass the `include:` option to
+`#to_json`, which will pass it along to `#as_json`:
 
 ```rb
   get '/games/:id' do
