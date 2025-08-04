@@ -12,10 +12,6 @@ end
 
 desc "Start the server"
 task :server do  
-  if ActiveRecord::Base.connection.migration_context.needs_migration?
-    puts "Migrations are pending. Make sure to run `rake db:migrate` first."
-    return
-  end
 
   # rerun allows auto-reloading of server when files are updated
   # -b runs in the background (include it or binding.pry won't work)
