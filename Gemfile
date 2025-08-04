@@ -23,7 +23,9 @@ gem "sqlite3", "~> 1.4"
 # Require all files in a folder
 # https://github.com/jarmo/require_all
 gem "require_all"
-
+gem 'puma'
+gem 'webrick'
+gem 'logger'
 # These gems will only be used when we are running the application locally
 group :development do
   # Used to generate seed data
@@ -35,6 +37,7 @@ group :development do
   gem "rerun"
 
   gem "pry"
+  gem 'rubocop'
 end
 
 # These gems will only be used when we are running tests
@@ -44,5 +47,3 @@ group :test do
   gem "rack-test", "~> 1.1"
   gem "rspec-json_expectations", "~> 2.2"
 end
-
-
